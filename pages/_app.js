@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import ProgressBar from "@badrap/bar-of-progress";
 import { Router, useRouter } from "next/router";
 import { getSession, SessionProvider } from "next-auth/react";
+import { UserProvider } from '@auth0/nextjs-auth0';
 
 const progress = new ProgressBar({
   size: 3,
@@ -15,15 +16,17 @@ Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
 
-function MyApp({ 
-  Component, 
-  pageProps : {session, ...pageProps}
-}) 
-{
+function MyApp({
+  Component,
+  pageProps,
+  session
+}) {
   return (
-    <SessionProvider session={pageProps.session}>
-      <Component {...pageProps} />
-    </SessionProvider>
+    // <UserProvider>
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    // </UserProvider>
   )
 }
 

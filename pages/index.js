@@ -4,10 +4,12 @@ import React from 'react'
 import Login from './login';
 
 const Home = () => {
+  const { data: session } = useSession();
+  console.log(session)
 return (
   <>
-  <h1>Hello</h1>
-  <button onClick={signOut}>Sign Out</button>
+  <span>Hello<h1>{session.user.name}</h1></span>
+  <button onClick={() => signOut()}>Sign Out</button>
   </>
 )
 }
@@ -27,6 +29,6 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { providers }
+    props: { session }
   };
 }
