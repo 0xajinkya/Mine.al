@@ -6,24 +6,65 @@ import Header from '../components/Header'
 import styles from '../styles/Home.module.css'
 import logo from '../img/logo.png'
 import Link from 'next/link'
-
+import axios from 'axios';
+import { toast } from 'react-toastify'
+import bcryptjs from 'bcryptjs'
 
 export default function Login({ providers }) {
   // const [session, loading] = useSession();
   // const [providers, setProviders] = useState({});
   const { data: session } = useSession()
-  const createnewAccountRef = useRef();
+  // const createnewAccountRef = useRef();
   const [createNewAccount, setCreateNewAccount] = useState(false);
-
+  const [signUp, setSignUp] = useState({ username: '', email: '', password: '' });
   const signInWithGoogle = async () => {
     await signIn('google').then(() => console.log(session))
 
   }
 
-  useEffect(() => {
-    console.log(createnewAccountRef.current.value)
-  }, [createnewAccountRef.current?.value])
-  
+  // useEffect(() => {
+  //   console.log(createnewAccountRef.current.checked)
+  // }, [createnewAccountRef.current?.value])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // setCreateNewAccount()
+    console.log(createNewAccount)
+    if (createNewAccount === true) {
+      try {
+        await axios.post('/api/auth/signup', signUp)
+        const result = await signIn('credentials', {
+          redirect: false,
+          email: signUp.email,
+          password: signUp.password,
+        });
+        if (result.error) {
+          toast.error(result.error);
+        }
+      } catch (err) {
+        toast.error(err);
+      }
+    } else {
+      try {
+        const result = await signIn('credentials', {
+          redirect: false,
+          email: signUp.email,
+          password: signUp.password,
+        });
+        console.log(result)
+        if (result.error) {
+          toast.error(result.error);
+        }
+      } catch (error) {
+        toast.error(error);
+      }
+    }
+  }
+
+  const handleChange = (e) => {
+    setSignUp({ ...signUp, [e.target.name]: e.target.value })
+  }
+
   if (session) {
     return (<div onClick={() => signOut()}>Welcome, {session.user.email}</div>)
   } else {
@@ -37,25 +78,26 @@ export default function Login({ providers }) {
           <div className='flex justify-center p-5 pb-10 pt-0 font-JS text-xl items-center'>
             <p className='text-md mb-10'>Connect With Your Peers, Organize Events, Create Memories</p>
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className='flex justify-center'>
-            <input ref={createnewAccountRef}  onClick={()=>setCreateNewAccount(!createNewAccount)} className='text-[#720b8f] focus:ring-0' type="checkbox" />
-            <p className='text-sm m-2 mt-0'>Create New Account?</p>
+              <input onClick={() => { console.log(!createNewAccount); setCreateNewAccount(!createNewAccount) }} className='text-[#720b8f] focus:ring-0' type="checkbox" />
+              <p className='text-sm m-2 mt-0'>Create New Account?</p>
             </div>
-            <input required placeholder='Username' className={`${createNewAccount===false ? 'hidden' : 'visible'} w-72 flex m-auto p-3 rounded-full bg-white border-2 border-[#720b8f] focus:ring-2 focus:ring-[#720b8f] focus:ring-offest-2 transition-all focus:ring-offset-[#720b8f] font-RW`} />
-            <input required placeholder='Email' className='mt-6 w-72 flex m-auto p-3 rounded-full bg-white border-2 border-[#720b8f] focus:ring-2 focus:ring-[#720b8f] focus:ring-offest-2 transition-all focus:ring-offset-[#720b8f] font-RW' />
-            <input required placeholder='Password' className='mt-6 w-72 flex m-auto p-3 rounded-full bg-white border-2 border-[#720b8f] focus:ring-2 focus:ring-[#720b8f] focus:ring-offest-2 transition-all focus:ring-offset-[#720b8f] font-RW' />
+            <input required={createNewAccount === true ? true : false} value={signUp.username} name='username' onChange={handleChange} placeholder='Username' className={`${createNewAccount === false ? 'hidden' : 'visible'} w-72 flex m-auto p-3 rounded-full bg-white border-2 border-[#720b8f] focus:ring-2 focus:ring-[#720b8f] focus:ring-offest-2 transition-all focus:ring-offset-[#720b8f] font-RW`} />
+            <input required value={signUp.email} name='email' onChange={handleChange} placeholder='Email' className='mt-6 w-72 flex m-auto p-3 rounded-full bg-white border-2 border-[#720b8f] focus:ring-2 focus:ring-[#720b8f] focus:ring-offest-2 transition-all focus:ring-offset-[#720b8f] font-RW' />
+            <input required value={signUp.password} name='password' onChange={handleChange} placeholder='Password' className='mt-6 w-72 flex m-auto p-3 rounded-full bg-white border-2 border-[#720b8f] focus:ring-2 focus:ring-[#720b8f] focus:ring-offest-2 transition-all focus:ring-offset-[#720b8f] font-RW' />
             <button
               // onClick={()=>{signIn(`email`, {callbackUrl: '/'})}}
+              type='submit'
               data-mdb-ripple="true"
               data-mdb-ripple-color="light"
-              className='ripple hover:bg-[#8718a6] w-72 flex m-auto mt-4 sm:mb-6 rounded-full border-2 p-3 bg-[#720b8f] text-white  transition'>
+              className='ripple hover:bg-[#8718a6] w-72 flex m-auto mt-4 sm:mb-6 rounded-full border-2 p-3 bg-[#720b8f] text-white  transition-all'>
               {/* <img className='w-8 h-8 mr-2' src={`'Google' === 'Facebook' ? 'https://img.icons8.com/color/144/000000/facebook-circled--v1.png' : 'https://img.icons8.com/fluency/144/000000/google-logo.png'} `} /> */}
               {/* <img className='w-8 h-8 mr-2' src={`https://img.icons8.com/fluency/144/000000/google-logo.png`} /> */}
-              <span className='m-auto'>{createNewAccount===true? 'Sign Up' : 'Sign In'}</span>
+              <span className='m-auto'>{createNewAccount === true ? 'Sign Up' : 'Sign In'}</span>
             </button>
           </form>
-          <p className={`${createNewAccount===false ? 'hidden' : 'visible'} flex justify-center sm:-mt-1 lg:-mt-2  mb-12 font-JS cursor-pointer underline text-sm`}>Forgot Password?</p>
+          <p className={`${createNewAccount === false ? 'hidden' : 'visible'} flex justify-center sm:-mt-1 lg:-mt-2  mb-12 font-JS cursor-pointer underline text-sm`}>Forgot Password?</p>
           <p className='flex m-auto'>or</p>
           <p className='flex m-auto mt-5'>Continue With ...</p>
           <div className='flex flex-row justify-center'>
