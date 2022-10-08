@@ -8,7 +8,7 @@ const Home = () => {
   console.log(session)
 return (
   <>
-  <span>Hello<h1>{session.user.name}</h1></span>
+  <span>Hello<h1>{session?.user.name}</h1></span>
   <button onClick={() => signOut()}>Sign Out</button>
   </>
 )
