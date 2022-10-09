@@ -9,7 +9,7 @@ import Link from 'next/link'
 import axios from 'axios';
 import { toast } from 'react-toastify'
 import bcryptjs from 'bcryptjs'
-
+import Home from './index'
 export default function Login({ providers }) {
   // const [session, loading] = useSession();
   // const [providers, setProviders] = useState({});
@@ -33,6 +33,7 @@ export default function Login({ providers }) {
     if (createNewAccount === true) {
       try {
         await axios.post('/api/auth/signup', signUp)
+
         const result = await signIn('credentials', {
           redirect: false,
           email: signUp.email,
@@ -66,7 +67,7 @@ export default function Login({ providers }) {
   }
 
   if (session) {
-    return (<div onClick={() => signOut()}>Welcome, {session.user.email}</div>)
+    return <Home />
   } else {
     return (
       <div className='flex justify-center items-center lg:flex-row xs:flex-col sm:flex-col md:flex-col font-JS'>
