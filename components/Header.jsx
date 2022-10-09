@@ -3,14 +3,14 @@ import React from 'react'
 import minealLogo from '../images/minealLogo.jpg'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-
+import { motion } from 'framer-motion'
 const Header = () => {
   const router = useRouter();
 
   const [activeTab, setActiveTab] = useState('Home')
   const SearchBar = () => {
     return (
-      <div className='flex flex-row relative ml-4'>
+      <div className='flex flex-row relative ml-4' title='Search'>
         <img className='w-10 h-10 absolute left-[14px] top-[9px]' src="https://img.icons8.com/plasticine/100/000000/search-more.png"/>
         <input placeholder='Search' className='font-RW rounded-full m-auto ml-2 p-3 pl-12 pr-0 focus:ring-2 focus:ring-[#720b8f] focus:ring-offest-2 focus:ring-offset-[#720b8f] border-[#720b8f] mr-0' type='text'/>
       </div>
@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <div className='flex flex-row justify-between rounded-full'>
         {/* <div className='flex flex-[1] p-4 bg-[#ead6f0] rounded-b-xl'> */}
-        <div className='flex flex-[1] p-4 rounded-b-xl bg-red'>
+        <div className='flex flex-[1] p-4 rounded-b-xl bg-red' >
           <h1 onClick={()=>router.push('/')} className='text-5xl text-[#720b8f] font-JS cursor-pointer mt-2' title='Mineal'>M</h1>
           {/* <img src='./img/logo.png'/> */}
           <SearchBar />
