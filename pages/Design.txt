@@ -1,0 +1,119 @@
+Navbar :- Icons --> Home
+                    Group
+                    Event
+                    DM
+                    Setting
+                    Time
+
+
+
+
+Colorful Home :- { 
+                    https://img.icons8.com/bubbles/50/000000/home-page.png
+                    128x128, 256x256, 512x512
+}
+
+Normal Home :- {
+                    https://img.icons8.com/puffy/32/000000/experimental-home-puffy.png
+                    64x64, 128x128, 256x256, 512x512
+}
+
+Leisure Home :- {
+                    https://img.icons8.com/fluency-systems-regular/48/000000/home.png,
+                    48x48, 96x96, 144x144
+}
+
+Active Home :- {
+                    https://img.icons8.com/fluency-systems-filled/48/000000/home.png,
+                    48x48, 96x96, 144x144
+}
+
+Colorful Group :- {
+                    https://img.icons8.com/bubbles/50/000000/user-group-woman-woman.png
+                    64x64, 128x128, 256x256, 512x512
+}
+
+Leisure Group :- {
+                    https://img.icons8.com/ios/50/000000/groups.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Active Group :- {
+                    https://img.icons8.com/ios-filled/50/000000/groups.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Colorful DM's :- {
+                    https://img.icons8.com/bubbles/50/000000/remind-app.png
+                    50x05,100x100, 200x200, 500x500
+}
+
+Leisure DM's :- {
+                    https://img.icons8.com/ios/50/000000/messages-mac.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Active DM's :- {
+                    https://img.icons8.com/ios-filled/50/000000/messages-mac.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Colorful Event :- {
+                    "https://img.icons8.com/bubbles/50/000000/icalendar.png
+                    50x50, 100x100, 200x200, 500x500
+}
+
+Leisure Event :- {
+                    https://img.icons8.com/sf-ultralight/50/000000/event-accepted-tentatively.png,
+                    50x50, 75x75, 100x100, 250x250, 500x500
+}
+
+Active Event :- {
+                    https://img.icons8.com/sf-regular-filled/48/000000/event-accepted-tentatively.png,
+                    48x48, 96x96, 144x144, 192x192, 240x240, 480x480
+}
+
+Colorful Setting :- {
+                    https://img.icons8.com/bubbles/50/000000/gear.png,
+                    50x50, 100x100, 200x200, 500x500
+}
+
+Leisure Setting :- {
+                    https://img.icons8.com/ios/50/000000/gear.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Active Setting :- {
+                    https://img.icons8.com/ios-filled/50/000000/gear.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Colorful Time :- {
+                    https://img.icons8.com/bubbles/50/000000/time-machine.png,
+                    50x50, 100x100, 200x200, 500x500
+}
+
+Leisure Time :- {
+                    https://img.icons8.com/ios/50/000000/time-machine.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Active Time :- {
+                    https://img.icons8.com/ios-filled/50/000000/time-machine.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Colorful Notification :- {
+                    https://img.icons8.com/bubbles/50/000000/alarm.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Leisure Notification :- {
+                    https://img.icons8.com/sf-ultralight/50/000000/alarm.png,
+                    50x50, 75x75, 100x100, 250x250, 500x500
+}
+
+Active Notification :- {
+                    https://img.icons8.com/ios-filled/50/000000/alarm.png,
+                    50x50, 100x100, 150x150, 250x250, 500x500
+}
