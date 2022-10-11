@@ -2,7 +2,7 @@ import { getSession, signIn, signOut, useSession, providers, getProviders } from
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import Header from '../components/Header'
+// import Header from '../components/Header'
 import styles from '../styles/Home.module.css'
 import logo from '../img/logo.png'
 import Link from 'next/link'

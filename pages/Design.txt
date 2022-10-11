@@ -59,7 +59,7 @@ Active DM's :- {
 }
 
 Colorful Event :- {
-                    "https://img.icons8.com/bubbles/50/000000/icalendar.png
+                    https://img.icons8.com/bubbles/50/000000/icalendar.png
                     50x50, 100x100, 200x200, 500x500
 }
 
@@ -116,4 +116,8 @@ Leisure Notification :- {
 Active Notification :- {
                     https://img.icons8.com/ios-filled/50/000000/alarm.png,
                     50x50, 100x100, 150x150, 250x250, 500x500
+}
+
+Goals :- {
+    https://img.icons8.com/bubbles/50/000000/goal.png
 }
