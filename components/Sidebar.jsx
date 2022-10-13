@@ -3,13 +3,13 @@ import home from '../img/icons/home.png'
 const Sidebar = () => {
     const [activeTab, setActiveTab] = useState('z');
   return (
-    <div className='flex flex-[1] flex-col h-screen transition-all'>
-        <h1 className='m-auto font-JS text-7xl text-[#780b8f] pl-5'>M</h1>
-        <div className='flex flex-row border-2 border-[#720b8f] ml-1 rounded-full'>
+    <div className='flex flex-[1.5] flex-col h-screen transition-all drop-shadow-md'>
+        <h1 className='m-auto font-JS text-7xl text-[#780b8f] pl-5 mt-3'>M</h1>
+        <div className='flex flex-row border-2 border-[#720b8f] ml-1 rounded-full mr-3 mt-6'>
             <img className='w-10 h-10' src='https://img.icons8.com/plasticine/400/000000/search-more.png'/>
-            <input placeholder='Search...' type='text' className='focus:ring-transparent outline-none border-none text-[#720b8f] m-auto mr-0 bg-transparent'/>
+            <input placeholder='Search Mine.al' type='text' className='focus:ring-transparent outline-none border-none text-[#720b8f] m-auto mr-0 bg-transparent -ml-3'/>
         </div>
-        <div className='overflow-y-scroll scrollbar-hide scroll-y'>
+        <div className='overflow-y-scroll scrollbar-hide scroll-y pr-16'>
         <div
         onClick={() => setActiveTab('Home')}
         className={`flex flex-row mt-10 ${activeTab==='Home' ? 'bg-[#720b8f] text-white' : 'text-black'} ml-1 hover:bg-[#ead6f0] hover:text-black  rounded-full transition-all`}>

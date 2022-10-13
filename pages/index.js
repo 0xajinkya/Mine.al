@@ -2,6 +2,8 @@ import { getProviders, getSession, signOut, useSession } from 'next-auth/react'
 import Router, { useRouter } from 'next/router';
 import React from 'react'
 import Sidebar from '../components/Sidebar';
+import Main from '../components/Main';
+import RightSidebar from '../components/RightSidebar';
 import Login from './login';
 
 const Home = () => {
@@ -12,10 +14,11 @@ return (
   // <span>Hello<h1>{session?.user.name || session?.user.email}</h1></span>
   // <button onClick={() => signOut()}>Sign Out</button>
   // </>
-  <div className='flex flex-row pt-5'>
+  <div className='flex flex-row font-JS pt-5 px-2'>
     <Sidebar />
-    <div className='flex flex-[6]'>Ajinkya</div>
-    <div className='flex flex-[3]'>Mineal</div>
+    <Main />
+    {/* <div className='flex flex-[2]'>Mineal</div> */}
+    <RightSidebar />
   </div>
 )
 }
